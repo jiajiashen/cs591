@@ -2,21 +2,21 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
-});
+//router.get('/', function(req, res, next) {
+//    res.render('index', { title: 'Express' });
+//});
 
 
 //test
-//router.get('/',function(req, res, next){
-//    res.send('test')
-//})
+router.get('/',function(req, res, next){
+    res.send('test')
+})
 
 
 //get method
 router.get('/:name', function (req, res, next) {
     let paraName = req.params.name
-    res.send(JSON.stringify({string: paraName, length: paraName.length}))
+    res.json({string: paraName, length: paraName.length})
 });
 
 

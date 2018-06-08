@@ -21,8 +21,8 @@ const str = mongoose.model('name', stringSchema)
 // get method
 router.get('/:nStr', function (req, res, next) {
     let paraName = req.params.nStr
-    str.find({name: paraName}, function (err, results){
-        if (results == null) {
+    str.find({name: paraName}, function (err, result){
+        if (result == null) {
             console.log("This is a new string:", paraName)
             const aStr = new str({
                 name: paraName,
@@ -39,7 +39,7 @@ router.get('/:nStr', function (req, res, next) {
         }
         else{
             console.log("String is Found")
-            res.json({name: results[0].name, length: results[0].length})
+            res.json(result)
         }
     })
 });
@@ -53,19 +53,19 @@ router.get('/', function (req, res, next) {
 });
 
 
-
+// Problem Three
 //post method
 router.post('/', function (req, res, next) {
     let key = req.body.name
     if (key){
-        str.find({name: key}, function (err, results){
-            if (results == null){
+        str.find({name: key}, function (err, result){
+            if (result == null){
                 console.log("This is a New String", key)
                 const aStr = new str({
                     name: key,
                     length: name.length
                 });
-                aStr.save(function(err, results){
+                aStr.save(function(err){
                     if (err){
                         res.send(err)
                     }
@@ -75,8 +75,8 @@ router.post('/', function (req, res, next) {
                 })
             }
             else{
-                console.log("This String:", results[0].name, "is Found")
-                res.json({name: results[0].name, length: results[0].length})
+                console.log("This String:", result[0].name, "is Found")
+                res.json(result)
             }
 
         })
@@ -91,11 +91,14 @@ router.post('/', function (req, res, next) {
 //delete
 router.delete('/:_nStr', function (req, res, next) {
     let paraName = req.params._nStr
-    str.findOneAndRemove({string: paraName}, function (err, dbBase, results) {
-        if(dbBase == null) {
-            res.json({message: 'String is not Found here'});}
-        else {
-            res.json({message: 'String is now deleted'});
+    str.find({name: paraName}, function (err, result) {
+        if (result == null){
+            res.json({message: 'String is not Found here'});
+        }
+        else{
+            str.findOneAndRemove({name: paraName}, function (err, result){
+                res.json({message: 'String is deleted.'})
+            })
         }
     })
 });

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- modified from professor's cs411 class demo -->
+    <!-- Latest compiled and minified jQuery -->
+    <script src="https://code.jquery.com/jquery-2.2.3.js"
+            integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <!-- Angular (minified) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-cookies.js"></script>
+
+    <!-- google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Galada|Gloria+Hallelujah|Pacifico|Shadows+Into+Light" rel="stylesheet">
+
+    <!--Controllers for this page/app -->
+    <script src="javascripts/controllers.js"></script>
+
+    <!-- Local styles -->
+    <link rel="stylesheet" href="stylesheets/style.css">
+
+</head>
+
+<body ng-app="cs591">
+
+<!-- modified from professor's cs411 class demo -->
+
+<div ng-controller="cs591ctrl" ng-init="initApp()">
+    <h2> <color="black"> Look For Your City, Decide What You Eat</h2>
+
+
+    <hr>
+    <br>
+
+    <div>
+        <form class="form-inline" name="inputForm">
+            <div class="form-group">
+                <label class="sr-only" for="formName">Which City Are You In</label>
+                <br>
+
+
+                <input type="text" class="form-control" id="formName" placeholder="Enter Your City" ng-model="name" required>
+            </div>
+
+            <br>
+
+
+
+            <div class="form-group">
+                <label class="sr-only" for="formUID">Which State Are You In</label>
+                <br>
+
+                <input type="text" class="form-control" id="formUID" placeholder="Enter Your State" ng-model="UID" required>
+            </div>
+
+
+            <br>
+            <button type="submit" class="btn btn-default" ng-disabled="inputForm.$invalid" ng-click="createUser()">
+                Look it up
+            </button>
+
+            <br>
+
+
+
+
+        </form>
+        <br/>
+        <div ng-hide="authorized">
+            <br/>
+            <button type="submit" class="btn btn-primary" ng-click="doTwitterAuth()">Log in with Twitter</button>
+        </div>
+        <div ng-show="showLogin">
+            Name: <input type="text" ng-model="name">
+            Username: <input type="text" ng-model="username">
+            Password: <input type="password" ng-model="password">
+            <button class="btn btm-sm" ng-click="login()">Log in</button>
+            <button class="btn btm-sm" ng-click="register()">Register</button>
+
+        </div>
+        <br/>
+        <div ng-show="authorized">
+            <button class="btn btn-sm" ng-click="logout()">Log out</button>
+        </div>
+        <br>
+        <br>
+
+        <hr>
+
+    </div>
+    <div class="col-xs-12" style="height:30px;"></div>
+    <div class="well col-md-6">
+        <ul class="list-group">
+            <li ng-controller="listController" class="list-group-item largeText" ng-repeat="user in users">{{user.name}}
+                <span ng-show="display"> {{user.UID}}   {{user.department}}</span>
+
+                <br>
+
+
+                <button class="btn btn-sm pull-right btn-info" ng-click="showWeather(user.UID);">
+                    Show Weather and Restaurant</span>
+                 </button>
+
+                <br>
+
+
+                <button class="btn btn-sm pull-right btn-danger" ng-click="deleteUser(user._id);">
+                    <span class="glyphicon glyphicon-trash"> delete</span>
+                </button>
+                
+            </li>
+        </ul>
+<!--
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>rating</th>
+                <th>phone</th>
+            </tr>
+
+            <tr *ngFor = "let name of names">
+                <td>{{name.name}}</td>
+                <td>{{name.location}}</td>
+                <td>{{name.rating}}</td>
+                <td>{{name.phone}}</td>
+            </tr>
+        </table>
+
+-->
+
+        <p>{{result}}</p>
+        <br>
+        
+        <p>{{info1}}</p>
+        <p>{{location1}}</p>
+        <p>{{rating1}}</p>
+        <p>{{phone1}}</p>
+
+        <br>
+        <p>{{info2}}</p>
+        <p>{{location2}}</p>
+        <p>{{rating2}}</p>
+        <p>{{phone2}}</p>
+
+        <br>
+        <p>{{info3}}</p>
+        <p>{{location3}}</p>
+        <p>{{rating3}}</p>
+        <p>{{phone3}}</p>
+
+        <br>
+        <p>{{info4}}</p>
+        <p>{{location4}}</p>
+        <p>{{rating4}}</p>
+        <p>{{phone4}}</p>
+
+        <br>
+        <p>{{info5}}</p>
+        <p>{{location5}}</p>
+        <p>{{rating5}}</p>
+        <p>{{phone5}}</p>
+
+
+
+
+</body>
+
+
+    </div>
+</div>
+</body>
+</html>

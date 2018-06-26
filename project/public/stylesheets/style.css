@@ -1,0 +1,22 @@
+*{
+  font-family: 'Galada', cursive;
+  font-family: 'Pacifico', cursive;
+  font-family: 'Shadows Into Light', cursive;
+  font-family: 'Gloria Hallelujah', cursive;
+  word-spacing: 5px;
+
+
+}
+a {
+  color: #00B7FF;
+}
+
+body {
+  padding: 100px;
+  font-family: 'Galada', cursive;
+  word-spacing: 5px;
+  font-size: 15px;
+}
+
+h2{font-size: 40px;
+}

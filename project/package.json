@@ -1,0 +1,41 @@
+{
+  "name": "userapi",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular-search": "^0.2.1",
+    "body-parser": "^1.18.3",
+    "chai": "^3.5.0",
+    "chai-http": "^4.0.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.3.5",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.3",
+    "google-maps": "^3.2.1",
+    "jade": "~1.11.0",
+    "mocha": "^5.2.0",
+    "mongoose": "^4.4.7",
+    "mongoose-findorcreate": "^2.0.0",
+    "morgan": "^1.9.0",
+    "ng-dialog": "^1.3.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-session": "^1.0.2",
+    "passport-twitter": "^1.0.4",
+    "pug": "^2.0.0-rc.2",
+    "request": "^2.69.0",
+    "serve-favicon": "^2.5.0",
+    "wunderground": "0.0.0",
+    "wunderground-api": "^1.1.4",
+    "yelp-fusion": "^2.0.3",
+    "youtube-api": "^2.0.8"
+  },
+  "devDependencies": {
+    "openweather-apis": "^3.3.5",
+    "openweathermap": "^1.0.0"
+  }
+}
